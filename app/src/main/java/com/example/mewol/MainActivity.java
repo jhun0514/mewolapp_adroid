@@ -11,11 +11,15 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.view.View;
+
 import static com.example.mewol.R.id.webView;
 
 public class MainActivity extends AppCompatActivity {
 
     private WebView mWebView;
+    FloatingActionButton mAddFab;
 
     private String myUrl = "http://";
 
@@ -34,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         mWebView.setWebChromeClient(new WebChromeClient());//웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 alert가 뜨지 않음
         mWebView.setWebViewClient(new WebViewClient());//새창열기 없이 웹뷰 내에서 다시 열기//페이지 이동 원활히 하기위해 사용
 
+        mAddFab = findViewById(R.id.home_fab);
+        mAddFab.setOnClickListener(
+            new View.OnClickListener() {
+                public void onClick(View view) {
+                    mWebView.loadUrl("http://매월매주.com");
+                }
+            });
 
     }
     //폰의 뒤로가기 버튼의 동작 입력
